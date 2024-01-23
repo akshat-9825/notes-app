@@ -2,8 +2,8 @@ import cn from "classnames";
 import { selectGroupData } from "./groupSlice";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import AddGroupModal from "./AddGroupModal";
 import Group from "../../components/Group";
-import Modal from "../../components/Modal";
 
 import styles from "./left-column.module.scss";
 
@@ -28,26 +28,7 @@ const LeftColumn = () => {
         onClick={() => setShowModal(true)}>
         +
       </div>
-      {showModal ? (
-        <Modal>
-          <div
-            className={cn(
-              styles.add_group_modal,
-              "column full-height full-width"
-            )}>
-            <div className={styles.add_group_modal_header}>
-              Create New group
-            </div>
-            <div className={cn(styles.add_group_modal_name_search, "row")}>
-              Group Name
-              <input
-                placeholder="Enter group name"
-                className={styles.add_group_modal_input}
-              />
-            </div>
-          </div>
-        </Modal>
-      ) : null}
+      {showModal ? <AddGroupModal setShowModal={setShowModal} /> : null}
     </div>
   );
 };
