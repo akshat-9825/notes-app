@@ -1,0 +1,17 @@
+.group_container {
+  gap: 3rem;
+  font-size: 2.4rem;
+  font-weight: 500;
+  letter-spacing: 0.048rem;
+  padding: 1.5rem;
+
+  &:hover {
+    transition: 0.3s;
+    background-color: $group-hover-color;
+    border-radius: 16px;
+  }
+
+  &--selected {
+    background-color: $group-selected-color;
+  }
+}

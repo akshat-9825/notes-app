@@ -1,5 +1,5 @@
 import cn from "classnames";
-import LeftColumn from "./LeftColumn";
+import LeftColumn from "../../features/LeftSection/LeftColumn";
 import RightColumn from "./RightColumn";
 
 import styles from "./home-page.module.scss";
