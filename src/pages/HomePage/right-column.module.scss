@@ -2,31 +2,44 @@
   @include flex-row;
 
   background: $background-color;
+  padding: 2.6rem;
 }
 
 .right_section {
-  gap: 0.75rem;
-  max-width: 40.625rem;
-  height: 20rem;
-  margin-top: 14.8rem;
+  gap: 1.2rem;
+  max-width: 65rem;
+  margin-top: 22.7rem;
 }
 
 .background_img {
   width: 100%;
   height: 100%;
-  max-width: 40rem;
-  height: 20rem;
+  max-width: 62.3rem;
+  height: 31.3rem;
 }
 
 .header {
-  font-size: 50px;
+  font-size: 5rem;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 0.1rem;
 }
 
 .sub_header {
-  font-size: 22px;
+  font-size: 2.2rem;
   font-weight: 400;
-  line-height: 32px;
-  letter-spacing: 0.44px;
+  line-height: 3.2rem;
+  letter-spacing: 0.044rem;
+}
+
+.footer {
+  margin-top: auto;
+  font-size: 2.2rem;
+  font-weight: 300;
+  line-height: 3.2rem;
+  letter-spacing: 0.044rem;
+  gap: 0.7rem;
+}
+
+.lock_icon {
+  top: -0.3rem;
 }

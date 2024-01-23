@@ -1,6 +1,7 @@
 import cn from "classnames";
 import styles from "./right-column.module.scss";
 import background from "@assets/right-placeholder.png";
+import { IconLock } from "../../utils/Icons/IconLock";
 
 const RightColumn = () => {
   return (
@@ -20,6 +21,10 @@ const RightColumn = () => {
           Send and receive messages without keeping your phone online. Use
           Pocket Notes on up to 4 linked devices and 1 mobile phone
         </div>
+      </div>
+      <div className={cn(styles.footer, "row flex-c")}>
+        <IconLock className={cn("relative", styles.lock_icon)} />
+        end-to-end encrypted
       </div>
     </div>
   );
