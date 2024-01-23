@@ -43,3 +43,39 @@
     background-color: $button-hover-color;
   }
 }
+
+.add_group_modal {
+  padding: 3.5rem 5.1rem;
+}
+
+.add_group_modal_header {
+  font-size: 2.9rem;
+  font-weight: 500;
+  line-height: 160.188%;
+  letter-spacing: 0.1015rem;
+}
+
+.add_group_modal_name_search {
+  margin-top: 1.42rem;
+  gap: 4.2rem;
+  font-size: 2.7314rem;
+  font-weight: 500;
+  line-height: 160.188%;
+  letter-spacing: 0.0956rem;
+}
+
+.add_group_modal_input {
+  flex: 1;
+  border-radius: 2.2rem;
+  font-family: Roboto;
+  border: 0.2rem solid #ccc;
+  padding-left: 2.8rem;
+  color: black;
+  font-size: 2.3rem;
+  letter-spacing: 0.0805rem;
+  height: 5.1rem;
+
+  &::placeholder {
+    color: #979797;
+  }
+}
