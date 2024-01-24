@@ -3,6 +3,11 @@
   height: 9.8rem;
 }
 
-.navbar_group {
+.navbar_group.navbar_group {
   color: #fff;
+  cursor: text;
+
+  &:hover {
+    background-color: inherit;
+  }
 }

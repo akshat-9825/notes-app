@@ -1,0 +1,26 @@
+.chatbar_container {
+  height: 25.5rem;
+  padding: 3rem;
+  background-color: $header-background-color;
+}
+
+.chatbar {
+  font-family: Roboto;
+  font-size: 2.9816rem;
+  letter-spacing: 0.0596rem;
+  color: black;
+  padding: 1.7rem 8rem 1.7rem 3rem;
+
+  &::placeholder {
+    color: #9a9a9a;
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+.send_icon {
+  right: 2.8rem;
+  bottom: 2.4rem;
+}
