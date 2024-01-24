@@ -8,6 +8,7 @@ export interface GroupState {
   groups: {
     name: string;
     id: number;
+    color: string;
   }[];
 }
 
@@ -21,11 +22,15 @@ export const groupSlice = createSlice({
   name: "group",
   initialState,
   reducers: {
-    addGroup: (state, action: PayloadAction<string>) => {
+    addGroup: (
+      state,
+      action: PayloadAction<{ name: string; color: string }>
+    ) => {
       state.totalGroups += 1;
       state.groups.push({
-        name: action.payload,
+        name: action.payload.name,
         id: state.totalGroups + 1,
+        color: action.payload.color,
       });
     },
   },

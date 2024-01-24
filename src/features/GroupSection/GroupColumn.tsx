@@ -18,8 +18,8 @@ const GroupColumn = () => {
       className={cn(styles.left_column_container, "column relative flex-ac")}>
       <div className={cn("text-c", styles.header)}>Pocket Notes</div>
       <div className={cn(styles.group_list, "column relative")}>
-        {groups.map((group) => (
-          <Group key={group.id} name={group.name} />
+        {groups.map(({ id, name, color }) => (
+          <Group key={id} name={name} color={color} />
         ))}
       </div>
       <div

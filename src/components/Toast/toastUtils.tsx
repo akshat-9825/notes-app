@@ -1,28 +1,25 @@
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import Toast, { ToastProps } from ".";
 
 export const defaultDuration = 3000;
-export const showToast = (
-  props: Omit<ToastProps, "toastVisible" | "setToastVisible">
-) => {
+export const showToast = (props: ToastProps) => {
   const root = document.documentElement;
   root?.style.setProperty(
     "--animation-time",
     `${props.duration || defaultDuration}ms`
   );
   const container = document.createElement("div");
-  document.body.appendChild(container);
+  const rootElement = createRoot(container);
 
   const closeToast = () => {
-    ReactDOM.unmountComponentAtNode(container);
     document.body.removeChild(container);
   };
-
   const toastComponent = (
     <Toast {...props} duration={props.duration || defaultDuration} />
   );
 
-  ReactDOM.render(toastComponent, container);
+  document.body.appendChild(container);
+  rootElement.render(toastComponent);
 
   setTimeout(() => {
     closeToast();

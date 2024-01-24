@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { addGroup } from "./groupSlice";
+import { colors } from "../../utils";
 import { useDispatch } from "react-redux";
 import cn from "classnames";
 import Modal from "../../components/Modal";
@@ -14,6 +15,7 @@ const AddGroupModal = ({
   const modalRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
+  const [colorSelected, setColorSelected] = useState("");
 
   const handleCreateBtn = useCallback(() => {
     if (inputRef.current) {
@@ -21,8 +23,18 @@ const AddGroupModal = ({
       const firstCharIsAlphabet = /^[A-Za-z]/.test(inputValue.charAt(0));
       const isValidInput = /^[A-Za-z0-9 ]*$/.test(inputValue);
 
-      if (inputValue !== "" && firstCharIsAlphabet && isValidInput) {
-        dispatch(addGroup(inputValue));
+      if (
+        inputValue !== "" &&
+        colorSelected !== "" &&
+        firstCharIsAlphabet &&
+        isValidInput
+      ) {
+        dispatch(
+          addGroup({
+            name: inputValue,
+            color: colorSelected,
+          })
+        );
         showToast({
           message: "Group created successfully",
           status: "success",
@@ -31,16 +43,17 @@ const AddGroupModal = ({
       } else {
         showToast({
           message:
-            "Invalid group name! Please follow the specified rules:\n" +
-            "- The first character must be an alphabet.\n" +
-            "- Only alphabets, numbers, and spaces are allowed.",
+            colorSelected === ""
+              ? "Color Not Selected!"
+              : "Invalid group name! Please follow the specified rules:\n" +
+                "- Name cannot be empty\n" +
+                "- The first character must be an alphabet.\n" +
+                "- Only alphabets, numbers, and spaces are allowed.",
           status: "error",
         });
       }
-    } else {
-      alert("Empty Text Not Allowed!");
     }
-  }, [dispatch, setShowModal]);
+  }, [colorSelected, dispatch, setShowModal]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -83,7 +96,20 @@ const AddGroupModal = ({
             "row"
           )}>
           Choose colour
-          <div>Colors</div>
+          <div className={cn("row", styles.color_group)}>
+            {colors.map((color, index) => {
+              return (
+                <div
+                  style={{ backgroundColor: color }}
+                  key={index}
+                  className={cn("cursor", styles.color_picker, {
+                    [styles.selected_color]: colorSelected === color,
+                  })}
+                  onClick={() => setColorSelected(color)}
+                />
+              );
+            })}
+          </div>
         </div>
         <button
           className={cn(styles.create_btn, "absolute cursor")}

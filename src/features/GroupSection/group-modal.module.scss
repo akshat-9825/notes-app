@@ -59,3 +59,20 @@
     background-color: #0047ff;
   }
 }
+
+.color_group {
+  gap: 1.2rem;
+}
+
+.color_picker {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  transition: box-shadow 0.1s ease-in-out;
+}
+
+.selected_color {
+  border: 0.3rem solid inherit;
+  box-shadow: 0 0 0.75rem gray, 0 0 1.5rem gray;
+  transition: box-shadow 0.1s ease-in-out;
+}
