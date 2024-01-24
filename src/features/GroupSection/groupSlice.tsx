@@ -1,5 +1,6 @@
 import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../store";
+import { generateSlug } from "../../utils";
 
 export interface GroupState {
   selectedGroupIndex: number;
@@ -8,6 +9,7 @@ export interface GroupState {
     name: string;
     id: number;
     color: string;
+    slug: string;
   }[];
 }
 
@@ -32,6 +34,7 @@ export const groupSlice = createSlice({
         name: action.payload.name,
         id: state.totalGroups,
         color: action.payload.color,
+        slug: generateSlug(action.payload.name),
       });
     },
     setSelectedGroup: (state, action: PayloadAction<number>) => {

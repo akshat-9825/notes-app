@@ -6,6 +6,7 @@ import AddGroupModal from "./AddGroupModal";
 import Group from "../../components/Group";
 
 import styles from "./group-column.module.scss";
+import { Link } from "react-router-dom";
 
 const GroupColumn = () => {
   const dispatch = useDispatch();
@@ -23,18 +24,21 @@ const GroupColumn = () => {
             id,
             name,
             color,
+            slug,
           }: {
             id: number;
             name: string;
             color: string;
+            slug: string;
           }) => (
-            <Group
-              key={id}
-              selected={selectedGroup === id}
-              onClick={() => dispatch(setSelectedGroup(id))}
-              name={name}
-              color={color}
-            />
+            <Link key={id} to={`/${slug}`}>
+              <Group
+                selected={selectedGroup === id}
+                onClick={() => dispatch(setSelectedGroup(id))}
+                name={name}
+                color={color}
+              />
+            </Link>
           )
         )}
       </div>
