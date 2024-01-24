@@ -22,9 +22,6 @@ const Toast: React.FC<ToastProps> = ({
   const [toastVisible, setToastVisible] = useState(true);
 
   useEffect(() => {
-    const root = document.documentElement;
-    root?.style.setProperty("--animation-time", `${duration}ms`);
-
     if (toastVisible) {
       const timeoutId = setTimeout(() => {
         setToastVisible(false);

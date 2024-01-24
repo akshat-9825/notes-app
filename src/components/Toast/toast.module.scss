@@ -1,13 +1,14 @@
 #root {
-  --animation-time: 2.5s;
+  --animation-time: 3s;
 }
 
 $animation-time: var(--animation-time);
 
 .toastContainer {
   @include flex-row;
+  @include align-c;
 
-  gap: 0.8rem;
+  gap: 1.2rem;
   position: fixed;
   background-color: #333;
   color: #fff;
@@ -16,7 +17,7 @@ $animation-time: var(--animation-time);
   animation: slideInOut $animation-time ease-in-out;
   font-size: $h4-size;
   max-width: 50rem;
-  z-index: 1000;
+  z-index: 5;
 
   &.success {
     border: 0.5rem solid #4caf50;

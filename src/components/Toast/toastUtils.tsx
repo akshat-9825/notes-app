@@ -1,10 +1,15 @@
 import ReactDOM from "react-dom";
 import Toast, { ToastProps } from ".";
 
-export const defaultDuration = 2500;
+export const defaultDuration = 3000;
 export const showToast = (
   props: Omit<ToastProps, "toastVisible" | "setToastVisible">
 ) => {
+  const root = document.documentElement;
+  root?.style.setProperty(
+    "--animation-time",
+    `${props.duration || defaultDuration}ms`
+  );
   const container = document.createElement("div");
   document.body.appendChild(container);
 
