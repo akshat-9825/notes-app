@@ -2,10 +2,10 @@ import { useCallback, useEffect, useRef } from "react";
 import { addGroup } from "./groupSlice";
 import { useDispatch } from "react-redux";
 import cn from "classnames";
-
 import Modal from "../../components/Modal";
 
 import styles from "./group-modal.module.scss";
+import { showToast } from "../../components/Toast/toastUtils";
 const AddGroupModal = ({
   setShowModal,
 }: {
@@ -23,14 +23,19 @@ const AddGroupModal = ({
 
       if (inputValue !== "" && firstCharIsAlphabet && isValidInput) {
         dispatch(addGroup(inputValue));
+        showToast({
+          message: "Group created successfully",
+          status: "success",
+        });
         setShowModal(false);
       } else {
-        alert(
-          "Invalid group name! Please follow the specified rules:\n" +
+        showToast({
+          message:
+            "Invalid group name! Please follow the specified rules:\n" +
             "- The first character must be an alphabet.\n" +
-            "- Only alphabets, numbers, and spaces are allowed."
-        );
-        // You can also show a SnackBar here
+            "- Only alphabets, numbers, and spaces are allowed.",
+          status: "error",
+        });
       }
     } else {
       alert("Empty Text Not Allowed!");

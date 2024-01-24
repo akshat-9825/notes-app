@@ -1,0 +1,63 @@
+#root {
+  --animation-time: 2.5s;
+}
+
+$animation-time: var(--animation-time);
+
+.toastContainer {
+  @include flex-row;
+
+  gap: 0.8rem;
+  position: fixed;
+  background-color: #333;
+  color: #fff;
+  padding: 12px;
+  border-radius: 4px;
+  animation: slideInOut $animation-time ease-in-out;
+  font-size: $h4-size;
+  max-width: 50rem;
+  z-index: 1000;
+
+  &.success {
+    border: 0.5rem solid #4caf50;
+  }
+
+  &.error {
+    border: 0.5rem solid #f44336;
+  }
+}
+
+.topRight {
+  top: 16px;
+  right: 16px;
+}
+
+.topLeft {
+  top: 16px;
+  left: 16px;
+}
+
+.bottomRight {
+  bottom: 16px;
+  right: 16px;
+}
+
+.bottomLeft {
+  bottom: 16px;
+  left: 16px;
+}
+
+@keyframes slideInOut {
+  0% {
+    transform: translateX(120%);
+  }
+  25% {
+    transform: translateX(0);
+  }
+  75% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(120%);
+  }
+}

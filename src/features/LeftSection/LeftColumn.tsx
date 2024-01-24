@@ -11,7 +11,6 @@ const LeftColumn = () => {
   // const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const { groups } = useSelector(selectGroupData);
-
   // dispatch(addGroup("New Group"))
 
   return (
