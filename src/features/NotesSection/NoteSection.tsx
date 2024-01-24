@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import cn from "classnames";
 import { GroupItem, selectGroupData } from "../GroupSection/groupSlice";
@@ -18,16 +18,23 @@ const NoteSection = () => {
     slug !== undefined ? groups.find((g: GroupItem) => g.slug === slug) : null;
 
   if (slug) {
-    return (
-      <div
-        className={cn(
-          styles.right_column_container,
-          "full-width space-between column"
-        )}>
-        <Navbar name={groupSelected.name} color={groupSelected.color} />
-        <Chatbar inputValue={inputValue} setInputValue={setInputValue} />
-      </div>
-    );
+    if (groupSelected) {
+      return (
+        <div
+          className={cn(
+            styles.right_column_container,
+            "full-width space-between column"
+          )}>
+          <Navbar
+            name={groupSelected.name || ""}
+            color={groupSelected.color || ""}
+          />
+          <Chatbar inputValue={inputValue} setInputValue={setInputValue} />
+        </div>
+      );
+    } else {
+      return <Navigate to="/" />;
+    }
   }
 
   return (

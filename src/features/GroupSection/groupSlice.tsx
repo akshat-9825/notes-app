@@ -4,7 +4,7 @@ import { generateSlug } from "../../utils";
 
 export interface GroupItem {
   name: string;
-  id: number;
+  id: string;
   color: string;
   slug: string;
 }
@@ -21,6 +21,11 @@ const initialState: GroupState = {
   groups: [],
 };
 
+const generateUniqueId = () => {
+  const uuid = Math.random().toString(36).slice(-8);
+  return uuid;
+};
+
 export const groupSlice = createSlice({
   name: "group",
   initialState: localStorage.getItem("reduxState")
@@ -34,7 +39,7 @@ export const groupSlice = createSlice({
       state.totalGroups += 1;
       state.groups.push({
         name: action.payload.name,
-        id: state.totalGroups,
+        id: generateUniqueId(),
         color: action.payload.color,
         slug: generateSlug(action.payload.name),
       });
