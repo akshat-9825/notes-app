@@ -163,3 +163,33 @@ h6,
   @extend .flex-ac;
   @extend .flex-jc;
 }
+
+.styled_scrollbar {
+  overflow-y: hidden;
+}
+
+.styled_scrollbar:hover,
+.styled_scrollbar:active,
+.styled_scrollbar:focus {
+  overflow-y: auto;
+}
+
+.styled_scrollbar::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 4.5px;
+  width: 8px;
+  background-color: #555;
+}
+
+.styled_scrollbar::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 4.5px;
+  background-color: #555;
+}
+
+.styled_scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 4.5px;
+  border: 1px solid rgba(0, 0, 0, 0.63);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #ffffff;
+}

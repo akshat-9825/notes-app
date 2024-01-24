@@ -16,7 +16,8 @@ const GroupColumn = () => {
     <div
       className={cn(styles.left_column_container, "column relative flex-ac")}>
       <div className={cn("text-c", styles.header)}>Pocket Notes</div>
-      <div className={cn(styles.group_list, "column relative")}>
+      <div
+        className={cn(styles.group_list, "column relative styled_scrollbar")}>
         {groups.map(
           ({
             id,
