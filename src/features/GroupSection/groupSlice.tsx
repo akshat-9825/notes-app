@@ -1,5 +1,4 @@
-import { createSelector, createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../store";
 
 export interface GroupState {
@@ -42,10 +41,9 @@ export const selectTotalGroups = (state: RootState) => state.group.totalGroups;
 
 export const selectGroups = (state: RootState) => state.group.groups;
 
-export const selectGroupData = createSelector(
-  selectTotalGroups,
-  selectGroups,
-  (totalGroups, groups) => ({ totalGroups, groups })
-);
+export const selectGroupData = (state: RootState) => ({
+  totalGroups: state.group.totalGroups,
+  groups: state.group.groups,
+});
 
 export default groupSlice.reducer;
