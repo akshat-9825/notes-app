@@ -80,7 +80,7 @@ const AddGroupModal = ({
           "column full-height full-width relative"
         )}
         ref={modalRef}>
-        <div className={styles.add_group_modal_header}>Create New group</div>
+        <div className={styles.add_group_modal_heading}>Create New group</div>
         <div className={cn(styles.add_group_modal_name_search, "row")}>
           Group Name
           <input

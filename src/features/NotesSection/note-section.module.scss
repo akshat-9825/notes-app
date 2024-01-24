@@ -2,6 +2,9 @@
   @include flex-row;
 
   background: $background-color;
+}
+
+.no_group_selected {
   padding: 2.6rem;
 }
 
@@ -22,7 +25,7 @@
   }
 }
 
-.header {
+.heading {
   @include multiline-ellipses(1);
 
   font-size: 5rem;
@@ -30,7 +33,7 @@
   letter-spacing: 0.1rem;
 }
 
-.sub_header {
+.sub_heading {
   @include multiline-ellipses(2);
 
   font-size: 2.2rem;
@@ -40,6 +43,8 @@
 }
 
 .footer {
+  @include multiline-ellipses(1);
+
   margin-top: auto;
   font-size: 2.2rem;
   font-weight: 300;

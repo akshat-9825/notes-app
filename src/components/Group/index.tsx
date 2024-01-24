@@ -3,21 +3,25 @@ import Avatar from "../Avatar";
 
 import styles from "./group.module.scss";
 
+export interface GroupProps {
+  name: string;
+  color: string;
+  selected?: boolean;
+  onClick?: () => void;
+  className?: string;
+}
+
 const Group = ({
   name,
   color,
   selected = false,
   onClick,
-}: {
-  name: string;
-  color: string;
-  selected?: boolean;
-  onClick?: () => void;
-}) => {
+  className,
+}: GroupProps) => {
   return (
     <div
       onClick={onClick}
-      className={cn("row flex-ac cursor", styles.group_container, {
+      className={cn("row flex-ac cursor", styles.group_container, className, {
         [styles.selected]: selected,
       })}>
       <Avatar name={name} color={color} />

@@ -2,15 +2,17 @@ import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../store";
 import { generateSlug } from "../../utils";
 
+export interface GroupItem {
+  name: string;
+  id: number;
+  color: string;
+  slug: string;
+}
+
 export interface GroupState {
   selectedGroupIndex: number;
   totalGroups: number;
-  groups: {
-    name: string;
-    id: number;
-    color: string;
-    slug: string;
-  }[];
+  groups: GroupItem[];
 }
 
 const initialState: GroupState = {

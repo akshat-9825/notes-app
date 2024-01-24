@@ -1,23 +1,19 @@
 import cn from "classnames";
-import styles from "./right-column.module.scss";
+import styles from "./note-section.module.scss";
 import background from "@assets/right-placeholder.png";
 import { IconLock } from "../../utils/Icons/IconLock";
 
-const RightColumn = () => {
+export const NoGroupSelected = () => {
   return (
-    <div
-      className={cn(
-        styles.right_column_container,
-        "full-width column flex-ac"
-      )}>
+    <div className={cn(styles.no_group_selected, "full-width column flex-ac")}>
       <div className={cn(styles.right_section, "column flex-ac")}>
         <img
           src={background}
           alt="background-img"
           className={styles.background_img}
         />
-        <div className={styles.header}>Pocket Notes</div>
-        <div className={styles.sub_header}>
+        <div className={styles.heading}>Pocket Notes</div>
+        <div className={styles.sub_heading}>
           Send and receive messages without keeping your phone online. Use
           Pocket Notes on up to 4 linked devices and 1 mobile phone
         </div>
@@ -29,5 +25,3 @@ const RightColumn = () => {
     </div>
   );
 };
-
-export default RightColumn;
