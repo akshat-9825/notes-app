@@ -1,10 +1,10 @@
 import { configureStore, Middleware } from "@reduxjs/toolkit";
 import groupReducer from "../features/GroupSection/groupSlice";
 
-const loadFromLocalStorage = () => {
-  const storedState = localStorage.getItem("reduxState");
-  return storedState ? JSON.parse(storedState) : undefined;
-};
+// const loadFromLocalStorage = () => {
+//   const storedState = localStorage.getItem("reduxState");
+//   return storedState ? JSON.parse(storedState) : undefined;
+// };
 const saveToLocalStorage: Middleware = (store) => (next) => (action) => {
   const result = next(action);
   localStorage.setItem("reduxState", JSON.stringify(store.getState()));

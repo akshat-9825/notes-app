@@ -10,8 +10,13 @@
     background-color: $group-hover-color;
     border-radius: 16px;
   }
+}
 
-  &--selected {
-    background-color: $group-selected-color;
+.selected.selected {
+  background-color: $group-selected-color;
+  border-radius: 16px;
+
+  &:hover {
+    background-color: none;
   }
 }

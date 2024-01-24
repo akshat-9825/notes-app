@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../store";
 
 export interface GroupState {
@@ -19,7 +19,9 @@ const initialState: GroupState = {
 
 export const groupSlice = createSlice({
   name: "group",
-  initialState,
+  initialState: localStorage.getItem("reduxState")
+    ? JSON.parse(localStorage.getItem("reduxState") as string).group
+    : initialState,
   reducers: {
     addGroup: (
       state,
@@ -28,22 +30,30 @@ export const groupSlice = createSlice({
       state.totalGroups += 1;
       state.groups.push({
         name: action.payload.name,
-        id: state.totalGroups + 1,
+        id: state.totalGroups,
         color: action.payload.color,
       });
+    },
+    setSelectedGroup: (state, action: PayloadAction<number>) => {
+      state.selectedGroupIndex = action.payload;
     },
   },
 });
 
-export const { addGroup } = groupSlice.actions;
+export const { addGroup, setSelectedGroup } = groupSlice.actions;
 
 export const selectTotalGroups = (state: RootState) => state.group.totalGroups;
-
 export const selectGroups = (state: RootState) => state.group.groups;
+export const selectSelectedGroup = (state: RootState) =>
+  state.group.selectedGroupIndex;
 
-export const selectGroupData = (state: RootState) => ({
-  totalGroups: state.group.totalGroups,
-  groups: state.group.groups,
-});
+export const selectGroupData = createSelector(
+  [selectTotalGroups, selectGroups, selectSelectedGroup],
+  (totalGroups, groups, selectedGroup) => ({
+    totalGroups,
+    groups,
+    selectedGroup,
+  })
+);
 
 export default groupSlice.reducer;
