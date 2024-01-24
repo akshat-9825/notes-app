@@ -1,5 +1,5 @@
 import cn from "classnames";
-import LeftColumn from "../../features/LeftSection/LeftColumn";
+import GroupColumn from "../../features/GroupSection/GroupColumn";
 import RightColumn from "./RightColumn";
 
 import styles from "./home-page.module.scss";
@@ -7,7 +7,7 @@ import styles from "./home-page.module.scss";
 const HomePage = () => {
   return (
     <div className={cn(styles.home_container, "row full-width full-height")}>
-      <LeftColumn />
+      <GroupColumn />
       <RightColumn />
     </div>
   );

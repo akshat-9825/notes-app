@@ -5,9 +5,9 @@ import { useSelector } from "react-redux";
 import AddGroupModal from "./AddGroupModal";
 import Group from "../../components/Group";
 
-import styles from "./left-column.module.scss";
+import styles from "./group-column.module.scss";
 
-const LeftColumn = () => {
+const GroupColumn = () => {
   // const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const { groups } = useSelector(selectGroupData);
@@ -32,4 +32,4 @@ const LeftColumn = () => {
   );
 };
 
-export default LeftColumn;
+export default GroupColumn;

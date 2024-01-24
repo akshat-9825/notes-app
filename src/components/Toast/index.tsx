@@ -8,7 +8,7 @@ export interface ToastProps {
   duration?: number;
   message: string;
   position?: "top-right" | "top-left" | "bottom-right" | "bottom-left";
-  status?: "success" | "error"; // New prop for status
+  status?: "success" | "error";
 }
 
 const Toast: React.FC<ToastProps> = ({
