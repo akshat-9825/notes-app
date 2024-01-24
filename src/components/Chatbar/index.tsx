@@ -23,7 +23,9 @@ const Chatbar = ({
         />
         <IconSend
           disabled={inputValue === ""}
-          className={cn("absolute cursor", styles.send_icon)}
+          className={cn("absolute", styles.send_icon, {
+            cursor: inputValue !== "",
+          })}
         />
       </div>
     </div>
