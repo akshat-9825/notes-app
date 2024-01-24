@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import cn from "classnames";
 import { selectGroupData, setSelectedGroup } from "./groupSlice";
 import { useState } from "react";
@@ -6,7 +7,6 @@ import AddGroupModal from "./AddGroupModal";
 import Group from "../../components/Group";
 
 import styles from "./group-column.module.scss";
-import { Link } from "react-router-dom";
 
 const GroupColumn = () => {
   const dispatch = useDispatch();
