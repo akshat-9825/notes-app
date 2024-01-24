@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import cn from "classnames";
-import { defaultDuration } from "./toastUtils";
 
 import styles from "./toast.module.scss";
 
@@ -14,7 +13,7 @@ export interface ToastProps {
 
 const Toast: React.FC<ToastProps> = ({
   className,
-  duration = defaultDuration,
+  duration,
   message,
   position = "top-right",
   status,
