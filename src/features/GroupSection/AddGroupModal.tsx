@@ -87,6 +87,7 @@ const AddGroupModal = ({
             placeholder="Enter group name"
             className={styles.add_group_modal_input}
             ref={inputRef}
+            autoFocus
           />
         </div>
         <div
@@ -102,6 +103,12 @@ const AddGroupModal = ({
                 <div
                   style={{ backgroundColor: color }}
                   key={index}
+                  tabIndex={index + 1}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      setColorSelected(color);
+                    }
+                  }}
                   className={cn("cursor", styles.color_picker, {
                     [styles.selected_color]: colorSelected === color,
                   })}
