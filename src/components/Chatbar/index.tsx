@@ -1,8 +1,10 @@
+import { useDispatch, useSelector } from "react-redux";
+import { KeyboardEvent, useCallback } from "react";
 import cn from "classnames";
 import { addNote } from "../../features/NotesSection/notesSlice";
 import { IconSend } from "../../utils/Icons/IconSend";
 import { selectGroupData } from "../../features/GroupSection/groupSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { showToast } from "../Toast/toastUtils";
 
 import styles from "./chatbar.module.scss";
 
@@ -16,6 +18,32 @@ const Chatbar = ({
   const dispatch = useDispatch();
   const { selectedGroup } = useSelector(selectGroupData);
 
+  const handleSend = useCallback(() => {
+    if (inputValue !== "") {
+      dispatch(
+        addNote({
+          content: inputValue,
+          groupId: selectedGroup,
+        })
+      );
+      showToast({
+        message: "Note added successfully",
+        status: "success",
+      });
+      setInputValue("");
+    }
+  }, [dispatch, inputValue, selectedGroup, setInputValue]);
+
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent<HTMLTextAreaElement>) => {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        handleSend();
+      }
+    },
+    [handleSend]
+  );
+
   return (
     <div className={cn(styles.chatbar_container, "full-width")}>
       <div className="relative full-width full-height">
@@ -26,6 +54,7 @@ const Chatbar = ({
             "column full-width full-height styled_scrollbar"
           )}
           onChange={(e) => setInputValue(e.target.value)}
+          onKeyDown={handleKeyDown}
           value={inputValue}
         />
         <IconSend
@@ -33,16 +62,7 @@ const Chatbar = ({
           className={cn("absolute", styles.send_icon, {
             cursor: inputValue !== "",
           })}
-          onClick={() => {
-            if (inputValue !== "") {
-              dispatch(
-                addNote({
-                  content: inputValue,
-                  groupId: selectedGroup,
-                })
-              );
-            }
-          }}
+          onClick={handleSend}
         />
       </div>
     </div>

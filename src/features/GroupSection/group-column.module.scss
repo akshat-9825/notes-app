@@ -15,8 +15,8 @@
 
 .group_list {
   width: 100%;
-  overflow-x: hidden;
   height: 100%;
+  scrollbar-gutter: auto;
 }
 
 .plus_button {
