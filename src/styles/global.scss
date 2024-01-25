@@ -179,6 +179,10 @@ h6,
 
 .styled_scrollbar {
   overflow-y: hidden;
+
+  @include tablet {
+    overflow-y: auto;
+  }
 }
 
 .styled_scrollbar:hover,

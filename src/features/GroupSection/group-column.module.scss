@@ -1,7 +1,10 @@
 .left_column_container {
   width: 43.5rem;
   flex-shrink: 0;
-  padding-bottom: 3.6rem;
+
+  @include tablet {
+    width: 100%;
+  }
 }
 
 .heading {
