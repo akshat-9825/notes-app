@@ -16,3 +16,8 @@ export const generateSlug = (name: string) => {
     .replace(/^-/, "")
     .replace(/-$/, "");
 };
+
+export const generateUniqueId = () => {
+  const uuid = Math.random().toString(36).slice(-8);
+  return uuid;
+};

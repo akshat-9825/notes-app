@@ -1,6 +1,10 @@
 import cn from "classnames";
-import styles from "./chatbar.module.scss";
+import { addNote } from "../../features/NotesSection/notesSlice";
 import { IconSend } from "../../utils/Icons/IconSend";
+import { selectGroupData } from "../../features/GroupSection/groupSlice";
+import { useDispatch, useSelector } from "react-redux";
+
+import styles from "./chatbar.module.scss";
 
 const Chatbar = ({
   inputValue,
@@ -9,6 +13,9 @@ const Chatbar = ({
   inputValue: string;
   setInputValue: React.Dispatch<React.SetStateAction<string>>;
 }) => {
+  const dispatch = useDispatch();
+  const { selectedGroup } = useSelector(selectGroupData);
+
   return (
     <div className={cn(styles.chatbar_container, "full-width")}>
       <div className="relative full-width full-height">
@@ -26,6 +33,16 @@ const Chatbar = ({
           className={cn("absolute", styles.send_icon, {
             cursor: inputValue !== "",
           })}
+          onClick={() => {
+            if (inputValue !== "") {
+              dispatch(
+                addNote({
+                  content: inputValue,
+                  groupId: selectedGroup,
+                })
+              );
+            }
+          }}
         />
       </div>
     </div>

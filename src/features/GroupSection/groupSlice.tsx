@@ -1,6 +1,6 @@
 import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../store";
-import { generateSlug } from "../../utils";
+import { generateSlug, generateUniqueId } from "../../utils";
 
 export interface GroupItem {
   name: string;
@@ -19,11 +19,6 @@ const initialState: GroupState = {
   selectedGroupIndex: 0,
   totalGroups: 0,
   groups: [],
-};
-
-const generateUniqueId = () => {
-  const uuid = Math.random().toString(36).slice(-8);
-  return uuid;
 };
 
 export const groupSlice = createSlice({
@@ -53,6 +48,7 @@ export const groupSlice = createSlice({
 export const { addGroup, setSelectedGroup } = groupSlice.actions;
 
 export const selectTotalGroups = (state: RootState) => state.group.totalGroups;
+
 export const selectGroups = (state: RootState) => state.group.groups;
 export const selectSelectedGroup = (state: RootState) =>
   state.group.selectedGroupIndex;
