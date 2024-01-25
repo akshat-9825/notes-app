@@ -1,8 +1,12 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useParams } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import cn from "classnames";
-import { GroupItem, selectGroupData } from "../GroupSection/groupSlice";
+import {
+  GroupItem,
+  selectGroupData,
+  setSelectedGroup,
+} from "../GroupSection/groupSlice";
 import { NoGroupSelected } from "./NoGroupSelected";
 import { selectNotesData } from "./notesSlice";
 import Chatbar from "../../components/Chatbar";
@@ -12,16 +16,32 @@ import Note from "../../components/Note";
 import styles from "./note-section.module.scss";
 
 const NoteSection = () => {
-  const { slug } = useParams();
-  const { groups, selectedGroup: currIndex } = useSelector(selectGroupData);
   const [inputValue, setInputValue] = useState("");
+  const { slug: currentSlug } = useParams();
+  const { groups, selectedGroup: currIndex } = useSelector(selectGroupData);
   const { selectNotes } = useSelector(selectNotesData);
-  const notes = selectNotes[currIndex] || [];
+  const dispatch = useDispatch();
 
-  const groupSelected =
-    slug !== undefined ? groups.find((g: GroupItem) => g.slug === slug) : null;
+  const notes = useMemo(
+    () => selectNotes[currIndex] || [],
+    [currIndex, selectNotes]
+  );
 
-  if (slug) {
+  const groupSelected = useMemo(
+    () =>
+      currentSlug !== undefined
+        ? groups.find((g: GroupItem) => g.slug === currentSlug)
+        : null,
+    [groups, currentSlug]
+  );
+
+  useEffect(() => {
+    if (currentSlug && groupSelected) {
+      dispatch(setSelectedGroup(groupSelected.id));
+    }
+  }, [currentSlug, dispatch, groupSelected]);
+
+  if (currentSlug) {
     if (groupSelected) {
       return (
         <div
