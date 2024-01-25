@@ -18,4 +18,9 @@
   background-color: #fff;
   border-radius: 6px;
   z-index: 2;
+
+  @include tablet {
+    width: 30.4rem;
+    height: 21.1rem;
+  }
 }

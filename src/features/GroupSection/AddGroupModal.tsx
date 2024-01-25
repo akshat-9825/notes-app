@@ -77,45 +77,51 @@ const AddGroupModal = ({
       <div
         className={cn(
           styles.add_group_modal,
-          "column full-height full-width relative"
+          "column full-height full-width relative space-between"
         )}
         ref={modalRef}>
-        <div className={styles.add_group_modal_heading}>Create New group</div>
-        <div className={cn(styles.add_group_modal_name_search, "row")}>
-          Group Name
-          <input
-            placeholder="Enter group name"
-            className={styles.add_group_modal_input}
-            ref={inputRef}
-            autoFocus
-          />
-        </div>
-        <div
-          className={cn(
-            styles.add_group_modal_name_search,
-            styles.choose_color_margin,
-            "row"
-          )}>
-          Choose colour
-          <div className={cn("row", styles.color_group)}>
-            {colors.map((color, index) => {
-              return (
-                <div
-                  style={{ backgroundColor: color }}
-                  key={index}
-                  tabIndex={index + 1}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      setColorSelected(color);
-                    }
-                  }}
-                  className={cn("cursor", styles.color_picker, {
-                    [styles.selected_color]: colorSelected === color,
-                  })}
-                  onClick={() => setColorSelected(color)}
-                />
-              );
-            })}
+        <div className="full-width column space-between">
+          <div className={styles.add_group_modal_heading}>Create New group</div>
+          <div
+            className={cn(
+              styles.add_group_modal_name_search,
+              "row space-between"
+            )}>
+            Group Name
+            <input
+              placeholder="Enter group name"
+              className={styles.add_group_modal_input}
+              ref={inputRef}
+              autoFocus
+            />
+          </div>
+          <div
+            className={cn(
+              styles.add_group_modal_name_search,
+              styles.choose_color_margin,
+              "row space-between"
+            )}>
+            Choose colour
+            <div className={cn("row", styles.color_group)}>
+              {colors.map((color, index) => {
+                return (
+                  <div
+                    style={{ backgroundColor: color }}
+                    key={index}
+                    tabIndex={index + 1}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        setColorSelected(color);
+                      }
+                    }}
+                    className={cn("cursor", styles.color_picker, {
+                      [styles.selected_color]: colorSelected === color,
+                    })}
+                    onClick={() => setColorSelected(color)}
+                  />
+                );
+              })}
+            </div>
           </div>
         </div>
         <button
