@@ -1,26 +1,39 @@
 .note_container {
-  padding-top: 2.8rem;
-  padding-left: 2.4rem;
-  padding-right: 1.9rem;
-  padding-bottom: 1.4rem;
+  padding: 2.8rem 1.9rem 1.4rem 2.4rem;
   background-color: #fff;
   border-radius: 0.5rem;
   box-shadow: 0rem 0.4rem 2rem 0rem rgba(0, 0, 0, 0.25);
   gap: 2rem;
+
+  @include tablet {
+    padding: 2.8rem 1.3rem 1.3rem;
+  }
 }
 
 .date_section {
   justify-content: flex-end;
   padding-right: 1.1rem;
   font-weight: 500;
+
+  @include tablet {
+    font-size: 1.3rem;
+  }
 }
 
 .note {
   font-size: $h3-size;
   line-height: 160.188%;
   letter-spacing: 0.063rem;
+
+  @include tablet {
+    font-size: 1.3rem;
+  }
 }
 
-.dot {
+.dot.dot {
   font-size: 0.8rem;
+
+  @include tablet {
+    margin: 0 0.8rem;
+  }
 }

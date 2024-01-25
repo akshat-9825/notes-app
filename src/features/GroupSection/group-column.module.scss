@@ -14,6 +14,13 @@
   letter-spacing: 0.07rem;
   margin-top: 6.6rem;
   margin-bottom: 5.5rem;
+
+  @include tablet {
+    font-size: 3.152rem;
+    letter-spacing: 0.06rem;
+    margin-top: 3.6rem;
+    margin-bottom: 2.5rem;
+  }
 }
 
 .group_list {
@@ -43,5 +50,13 @@
   &:hover {
     transition: 0.3s;
     background-color: $button-hover-color;
+  }
+
+  @include tablet {
+    height: 7.5rem;
+    width: 7.5rem;
+    font-size: 4rem;
+    bottom: 2.5rem;
+    left: calc(100% - 9.9rem);
   }
 }

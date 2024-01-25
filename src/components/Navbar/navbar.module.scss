@@ -1,6 +1,10 @@
 .navbar {
   background-color: $header-background-color;
   height: 9.8rem;
+
+  @include tablet {
+    height: 6.6rem;
+  }
 }
 
 .navbar_group.navbar_group {
@@ -9,6 +13,11 @@
 
   &:hover {
     background-color: inherit;
+  }
+
+  @include tablet {
+    font-size: 1.6rem;
+    padding: 0.9rem 0;
   }
 }
 

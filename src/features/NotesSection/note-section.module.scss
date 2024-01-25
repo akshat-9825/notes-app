@@ -61,4 +61,8 @@
   padding: 2.4rem 4rem;
   gap: 2rem;
   scrollbar-gutter: stable;
+
+  @include tablet {
+    padding: 2rem 1.7rem;
+  }
 }

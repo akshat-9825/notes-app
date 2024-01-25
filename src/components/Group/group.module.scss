@@ -10,6 +10,11 @@
     background-color: $group-hover-color;
     border-radius: 16px;
   }
+
+  @include tablet {
+    font-size: 1.8rem;
+    letter-spacing: 0.003rem;
+  }
 }
 
 .selected.selected {
